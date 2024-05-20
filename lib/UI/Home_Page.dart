@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
               currentPageIndex = index;
             });
           },
-          destinations: [
+          destinations: const [
             NavigationDestination(
                 icon: Icon(
                   Icons.home_outlined,
@@ -50,9 +50,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+// ignore: non_constant_identifier_names
 List<Widget>Pages = [
-  Home(),
-  ShowJobsPage(),
-  ChatPage(),
-  ShowServicesPage()
+  const Home(),
+  const ShowJobsPage(),
+  const ChatPage(),
+  const ShowServicesPage()
 ];
