@@ -1,4 +1,4 @@
-import 'package:empco/data/model/Base_Model.dart';
+import 'package:empco/Features/Auth/Models/Base_Model.dart';
 
 late TokenModel seekerLoginToken;
 late TokenModel seekerRegisterToken;
