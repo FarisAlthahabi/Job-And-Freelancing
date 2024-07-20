@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'auth_bloc.dart';
 
 @immutable
@@ -10,14 +9,14 @@ class LoadingState extends AuthState {}
 
 // register.......................................
 class SuccessToRegisterState extends AuthState {
-  TokenModel token;
+  final TokenModel token;
   SuccessToRegisterState({
     required this.token,
   });
 }
 
 class FailedToRegisterState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToRegisterState({
     required this.error,
   });
@@ -25,14 +24,14 @@ class FailedToRegisterState extends AuthState {
 
 // Verify.......................................
 class SuccessToVerifyState extends AuthState {
-  MessageModel message;
+  final MessageModel message;
   SuccessToVerifyState({
     required this.message,
   });
 }
 
 class FailedToVerifyState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToVerifyState({
     required this.error,
   });
@@ -40,28 +39,28 @@ class FailedToVerifyState extends AuthState {
 
 //Login with google...............................
 class SuccessToLoginWithGoogleState extends AuthState {
-  TokenModel token;
+  final TokenModel token;
   SuccessToLoginWithGoogleState({
     required this.token,
   });
 }
 
 class FailedToLoginWithGoogleState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToLoginWithGoogleState({
     required this.error,
   });
 }
 // Login.......................................
 class SuccessToLoginState extends AuthState {
-  TokenModel token;
+  final TokenModel token;
   SuccessToLoginState({
     required this.token,
   });
 }
 
 class FailedToLoginState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToLoginState({
     required this.error,
   });
@@ -69,14 +68,14 @@ class FailedToLoginState extends AuthState {
 
 // Logout.......................................
 class SuccessToLogoutState extends AuthState {
-  MessageModel message;
+  final MessageModel message;
   SuccessToLogoutState({
     required this.message,
   });
 }
 
 class FailedToLogoutState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToLogoutState({
     required this.error,
   });
@@ -84,14 +83,14 @@ class FailedToLogoutState extends AuthState {
 
 // Forget password.......................................
 class SuccessToForgetPasswordState extends AuthState {
-  MessageModel message;
+  final MessageModel message;
   SuccessToForgetPasswordState({
     required this.message,
   });
 }
 
 class FailedToForgetPasswordState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToForgetPasswordState({
     required this.error,
   });
@@ -99,14 +98,14 @@ class FailedToForgetPasswordState extends AuthState {
 
 // Check code.......................................
 class SuccessToCheckCodeState extends AuthState {
-  UserCheckCodeModel userCheckCode;
+ final UserCheckCodeModel userCheckCode;
   SuccessToCheckCodeState({
     required this.userCheckCode,
   });
 }
 
 class FailedToCheckCodeState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToCheckCodeState({
     required this.error,
   });
@@ -114,14 +113,14 @@ class FailedToCheckCodeState extends AuthState {
 
 // Reset password.......................................
 class SuccessToResetPasswordState extends AuthState {
-  MessageModel message;
+  final MessageModel message;
   SuccessToResetPasswordState({
     required this.message,
   });
 }
 
 class FailedToResetPasswordState extends AuthState {
-  ErrorModel error;
+  final ErrorModel error;
   FailedToResetPasswordState({
     required this.error,
   });

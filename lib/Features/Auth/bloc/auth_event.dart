@@ -4,22 +4,51 @@ part of 'auth_bloc.dart';
 @immutable
 sealed class AuthEvent {}
 
+// class GetFirstNameEvent extends AuthEvent {
+//   final String firstName;
+//   GetFirstNameEvent({
+//     required this.firstName,
+//   });
+// }
+
+// class GetLastNameEvent extends AuthEvent {
+//   final String lastName;
+//   GetLastNameEvent({
+//     required this.lastName,
+//   });
+// }
+
+// class GetEmailEvent extends AuthEvent {
+//   final String email;
+//   GetEmailEvent({
+//     required this.email,
+//   });
+// }
+
+// class GetPasswordEvent extends AuthEvent {
+//   final String password;
+//   GetPasswordEvent({
+//     required this.password,
+//   });
+//}
+
 class RegisterEvent extends AuthEvent {
-  String first_name;
-  String last_name;
-  String email;
-  String password;
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
   RegisterEvent({
-    required this.first_name,
-    required this.last_name,
+    required this.firstName,
+    required this.lastName,
     required this.email,
     required this.password,
   });
+ 
 }
 
 class VerifyEvent extends AuthEvent {
-  String email;
-  String token;
+  final String email;
+  final String token;
   VerifyEvent({
     required this.email,
     required this.token,
@@ -27,8 +56,8 @@ class VerifyEvent extends AuthEvent {
 }
 
 class LoginEvent extends AuthEvent {
-  String email;
-  String password;
+  final String email;
+  final String password;
   LoginEvent({
     required this.email,
     required this.password,
@@ -38,25 +67,26 @@ class LoginEvent extends AuthEvent {
 class LogoutEvent extends AuthEvent {}
 
 class ForgetPasswordEvent extends AuthEvent {
-  String email;
+  final String email;
   ForgetPasswordEvent({
     required this.email,
   });
 }
 
 class CheckCodeEvent extends AuthEvent {
-  String token;
+  final String token;
   CheckCodeEvent({
     required this.token,
   });
 }
 
 class ResetPasswordEvent extends AuthEvent {
-  String password;
-  String token;
+  final String password;
+  final String token;
   ResetPasswordEvent({
     required this.password,
     required this.token,
   });
 }
-class LoginWithGoogleEvent extends AuthEvent{}
+
+class LoginWithGoogleEvent extends AuthEvent {}

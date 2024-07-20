@@ -12,7 +12,7 @@ import 'package:empco/Features/Auth/Service/Base_Service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService extends BaseService {
-  Future<BaseModel> Register(UserModel user) async {
+  Future<BaseModel> register(UserModel user) async {
     try {
       response = await dio.post(RegisterURl, data: user.toMap());
       //print(response.data);
@@ -39,7 +39,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> LoginWithGoogle() async {
+  Future<BaseModel> loginWithGoogle() async {
     try {
       response = await dio.get(
         LoginWithGoogleURl,
@@ -60,7 +60,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> Verify(UserVerifyModel userVerify) async {
+  Future<BaseModel> verify(UserVerifyModel userVerify) async {
     try {
       response = await dio.post(VerifyURl, data: userVerify.toMap());
       if (response.statusCode == 200) {
@@ -75,7 +75,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> Login(UserLoginModel userLogin) async {
+  Future<BaseModel> login(UserLoginModel userLogin) async {
     try {
       response = await dio.post(LoginURl, data: userLogin.toMap());
       if (response.statusCode == 200) {
@@ -93,7 +93,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> Logout() async {
+  Future<BaseModel> logout() async {
     try {
       response = await dio.post(LogoutURl,
           options: Options(headers: {
@@ -113,7 +113,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> ForgetPassword(
+  Future<BaseModel> forgetPassword(
       UserForgetPasswordModel userForgetPassword) async {
     try {
       response =
@@ -126,6 +126,7 @@ class AuthService extends BaseService {
         return ErrorModel(error: response.statusMessage!);
       }
     } on Exception catch (e) {
+      print(e.toString());
       if (e.toString().contains('500')) {
         return ErrorModel(
             error: 'Check your internet connection and try again');
@@ -138,7 +139,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> CheckCode(TokenModel token) async {
+  Future<BaseModel> checkCode(TokenModel token) async {
     try {
       response = await dio.post(CheckCodeURl, data: token.toMap());
       if (response.statusCode == 200) {
@@ -155,7 +156,7 @@ class AuthService extends BaseService {
     }
   }
 
-  Future<BaseModel> ResetPassword(
+  Future<BaseModel> resetPassword(
       UserResetPasswordModel userResetPassword) async {
     try {
       response =
@@ -165,9 +166,11 @@ class AuthService extends BaseService {
         MessageModel message = MessageModel(message: data['msg']);
         return message;
       } else {
+        print(response.statusMessage);
         return ErrorModel(error: response.statusMessage!);
       }
     } on Exception catch (e) {
+      print(e.toString());
       return ErrorModel(error: e.toString());
     }
   }
