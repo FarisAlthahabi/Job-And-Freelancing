@@ -15,7 +15,7 @@ void empcoShowDialog(
             content: Text(
               'Are you sure you want to delete this job post?',
               style: GoogleFonts.poppins(
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: black,
                     fontSize: 13.68,
                     height: 1.2,
@@ -24,7 +24,7 @@ void empcoShowDialog(
             ),
             actionsAlignment: MainAxisAlignment.spaceEvenly,
             actions: [
-              AuthMainButton(
+              MainActionButton(
                 text: 'Cancel',
                 blurRadius:3.42 ,
                 yAxisOffset: 3.42,
@@ -38,7 +38,7 @@ void empcoShowDialog(
                   Navigator.pop(context);
                 },
                 ),
-              AuthMainButton(
+              MainActionButton(
                 text: 'Delete',
                 blurRadius:3.42 ,
                 yAxisOffset: 3.42,

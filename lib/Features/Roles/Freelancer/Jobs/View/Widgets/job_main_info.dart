@@ -230,7 +230,7 @@ class JobMainInfo extends StatelessWidget {
                     Padding(
                         // Apply Button
                         padding: const EdgeInsets.only(right: 5),
-                        child: AuthMainButton(
+                        child: MainActionButton(
                             width: 57.85,
                             height: 18.02,
                             text: 'Apply',

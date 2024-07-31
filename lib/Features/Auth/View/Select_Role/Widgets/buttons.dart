@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:empco/Core/Resources/Constants/shadows.dart';
 import 'package:flutter/material.dart';
 import 'package:empco/Core/Resources/Constants/Colors.dart';
 import 'package:empco/Core/Resources/Constants/font_weights.dart';
@@ -29,9 +29,7 @@ class SelectRoleButton extends StatelessWidget {
               width: 1.3,
             ),
             borderRadius: BorderRadius.circular(303.3),
-            boxShadow: [
-              boxShadow1,
-            ]),
+            boxShadow: AppShadows.boxShadow1),
         child: Center(
           child: Text(
             roleSelected[index],

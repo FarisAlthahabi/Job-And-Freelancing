@@ -144,7 +144,7 @@ class _JobPostViewState extends State<JobPostView>
                 const SubTitleWidget(
                     text: 'Use a title that describes one position only'),
                 const SizedBox(height: 8),
-                JopPostTextField(
+                MainTextField(
                   focusNode: titleFocusNode,
                   onChanged: onTitleChanged,
                   onSubmitted: onTitleSubmitted,
@@ -157,7 +157,7 @@ class _JobPostViewState extends State<JobPostView>
                     text:
                         'Provide a short description about the job, use key points.'),
                 const SizedBox(height: 8),
-                JopPostTextField(
+                MainTextField(
                   focusNode: descriptionFocusNode,
                   onChanged: onDescriptionChanged,
                   onSubmitted: onDescriptionSubmitted,
@@ -229,7 +229,7 @@ class _JobPostViewState extends State<JobPostView>
                 const SizedBox(height: 8),
                 const SubTitleWidget(text: 'Select the Location of the Job'),
                 const SizedBox(height: 8),
-                JopPostTextField(
+                MainTextField(
                   focusNode: locationFocusNode,
                   onChanged: onLocationChanged,
                   onSubmitted: onLocationSubmitted,
@@ -241,7 +241,7 @@ class _JobPostViewState extends State<JobPostView>
                 const SubTitleWidget(
                     text: 'What will the Salary for this job be?'),
                 const SizedBox(height: 8),
-                JopPostTextField(
+                MainTextField(
                   focusNode: salaryFocusNode,
                   onChanged: onSalaryChanged,
                   onSubmitted: onSalarySubmitted,
@@ -253,7 +253,7 @@ class _JobPostViewState extends State<JobPostView>
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AuthMainButton(
+                      MainActionButton(
                         onTap: onResetTap,
                         text: 'Reset',
                         fontSize: 12.3,
@@ -264,7 +264,7 @@ class _JobPostViewState extends State<JobPostView>
                         height: 30,
                       ),
                       const SizedBox(width: 15),
-                      AuthMainButton(
+                      MainActionButton(
                         onTap: onPostTap,
                         text: 'Post',
                         fontSize: 12.3,

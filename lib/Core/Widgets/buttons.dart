@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:empco/Core/Resources/Constants/Colors.dart';
@@ -33,7 +31,7 @@ class GlobalTextButton extends StatelessWidget {
               if (text2 != null)
                 TextSpan(
                     text: text2,
-                    style: TextStyle(color: bottomAuthPageTextColor2)),
+                    style: const TextStyle(color: bottomAuthPageTextColor2)),
             ]),
       ),
     );
@@ -74,25 +72,27 @@ class ContinueWithGoogleBotton extends StatelessWidget {
   }
 }
 
-class AuthMainButton extends StatelessWidget {
+class MainActionButton extends StatelessWidget {
   final double? width;
   final double? height;
   final String text;
   final double? blurRadius;
   final double? yAxisOffset;
   final Color? shadowColor;
-  final double fontSize;
+  final double? fontSize;
   final Widget? icon;
   final Color? buttonColor;
   final Border? border;
   final Color? textColor;
   final VoidCallback? onTap;
   final double? borderRadius;
+  final TextStyle? textStyle;
+  final List<BoxShadow>? shadow;
 
-  const AuthMainButton({
+  const MainActionButton({
     super.key,
     required this.text,
-    required this.fontSize,
+    this.fontSize,
     this.border,
     this.icon,
     this.textColor,
@@ -104,6 +104,8 @@ class AuthMainButton extends StatelessWidget {
     this.yAxisOffset,
     this.shadowColor,
     this.borderRadius,
+    this.textStyle,
+    this.shadow,
   });
 
   @override
@@ -117,7 +119,7 @@ class AuthMainButton extends StatelessWidget {
         decoration: BoxDecoration(
             color: buttonColor ?? blue,
             borderRadius: BorderRadius.circular(borderRadius ?? 327.16),
-            boxShadow: [
+            boxShadow: shadow ?? [
               BoxShadow(
                   offset: Offset(0, yAxisOffset ?? 0),
                   spreadRadius: 0,
@@ -126,17 +128,19 @@ class AuthMainButton extends StatelessWidget {
             ]),
         child: Center(
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 text,
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                      color: textColor ?? white,
-                      fontSize: fontSize,
-                      fontWeight: weightlevel7),
-                ),
+                style: textStyle ??
+                    GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                          color: textColor ?? white,
+                          fontSize: fontSize,
+                          fontWeight: weightlevel7),
+                    ),
                 textAlign: TextAlign.center,
               ),
               if (icon != null) icon!

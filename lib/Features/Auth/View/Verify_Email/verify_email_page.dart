@@ -210,7 +210,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>
                             IsWrongWidget(
                               isWrongCode: isWrongCode,
                             ),
-                            AuthMainButton(
+                            MainActionButton(
                                 width: 0.48 * screenWidth,
                                 height: 0.081 * screenHeight,
                                 text: confirm,

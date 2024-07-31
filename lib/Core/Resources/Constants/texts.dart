@@ -1,91 +1,117 @@
 // ignore_for_file: non_constant_identifier_names
 
 // Texts Shared in Pages ..................
-String emailAddress = 'Email Address';
-String signUpText = 'Sign Up';
-String orText = 'Or';
-String continueWithGoogleText = 'Continue With Google';
-String loginText = 'Login';
-String passwordText = 'Password';
-String registeringYou = 'Registering you ';
+const String emailAddress = 'Email Address';
+const String signUpText = 'Sign Up';
+const String orText = 'Or';
+const String continueWithGoogleText = 'Continue With Google';
+const String loginText = 'Login';
+const String passwordText = 'Password';
+const String registeringYou = 'Registering you ';
 
-String loginWithGoogleFail = 'Failed to login with Google';
-String loginSuccess = 'You are Logged in Successfully';
+const String loginWithGoogleFail = 'Failed to login with Google';
+const String loginSuccess = 'You are Logged in Successfully';
 
 // Select Role Page ...............
-String selectRolePageTitle = 'Let’s Get Started!';
-String selectRole = 'Select Your Role to Continue';
-String freelancer = 'Freelancer';
-String company = 'Company';
-String customer = 'Customer';
+const String selectRolePageTitle = 'Let’s Get Started!';
+const String selectRole = 'Select Your Role to Continue';
+const String freelancer = 'Freelancer';
+const String company = 'Company';
+const String customer = 'Customer';
 List<String> roleSelected = [freelancer, company, customer];
 
 //Verify Page ...................
 
-String verificationCodeIsSent =
+const String verificationCodeIsSent =
     'A verification code has been sent to your email\n';
-String emailText = 'example@gmail.com';
-String putCode = ', please put the code here';
-String wrongCode = 'Wrong Code! retype it correclty ';
-String confirm = 'Confirm';
-String goBack = 'go back';
-String verifyEmailText = 'Verify your email';
-String verifySuccess = 'Email is verified successfully';
-String verifyFail = 'Failed to verify your email';
+const String emailText = 'example@gmail.com';
+const String putCode = ', please put the code here';
+const String wrongCode = 'Wrong Code! retype it correclty ';
+const String confirm = 'Confirm';
+const String goBack = 'go back';
+const String verifyEmailText = 'Verify your email';
+const String verifySuccess = 'Email is verified successfully';
+const String verifyFail = 'Failed to verify your email';
 
 // Login Page .................................
-String welcomeBack = 'Welcome back!';
-String loginToYourAccount = 'Log in to your account';
-String forgetPasswordText = 'Forgot Passowrd?';
-String firstTimeHere = 'First time here?';
-String loginFail = 'Failed to login';
-String emailOrPasswordEmpty = 'Email or password can not be empty';
+const String welcomeBack = 'Welcome back!';
+const String loginToYourAccount = 'Log in to your account';
+const String forgetPasswordText = 'Forgot Passowrd?';
+const String firstTimeHere = 'First time here?';
+const String loginFail = 'Failed to login';
+const String emailOrPasswordEmpty = 'Email or password can not be empty';
 
 //Forget Password Page .......................
-String didForgetPasswordText = 'Forgot Password?';
-String noWorriesText = 'No worries, We will send you reset instructions.';
-String enterEmail = 'Please Enter your email';
-String resetPassword = 'Reset Password';
-String backToLoginText = 'back to Log In';
-String emailEmpty = 'Email can not be empty';
-String checkEmailBox = 'Check your email box to verify your email';
+const String didForgetPasswordText = 'Forgot Password?';
+const String noWorriesText = 'No worries, We will send you reset instructions.';
+const String enterEmail = 'Please Enter your email';
+const String resetPassword = 'Reset Password';
+const String backToLoginText = 'back to Log In';
+const String emailEmpty = 'Email can not be empty';
+const String checkEmailBox = 'Check your email box to verify your email';
 
 // Register Page..................
 
-String alreadyRegistered = 'Already Registerd?';
-String confirmPasswordText = 'Confirm Password';
-String firstNameText = 'First Name';
-String lastNameText = 'Last Name';
-String registerSuccess = 'You are registered successfully';
-String passwordAndConfirmSame =
+const String alreadyRegistered = 'Already Registerd?';
+const String confirmPasswordText = 'Confirm Password';
+const String firstNameText = 'First Name';
+const String lastNameText = 'Last Name';
+const String registerSuccess = 'You are registered successfully';
+const String passwordAndConfirmSame =
     'Password and confirm password are not the same';
 
 // Info Screens ..............
-String start = 'Get Started';
-String forCosumers = 'For Costumers';
-String forFreelancers = 'For Freelancers';
-String forCompanies = 'For Companies';
-List<String> infoText1 = ['For Costumers', 'For Freelancers', 'For Companies'];
-List<String> infoText2 = [
+const String start = 'Get Started';
+const String forCosumers = 'For Costumers';
+const String forFreelancers = 'For Freelancers';
+const String forCompanies = 'For Companies';
+const List<String> infoText1 = [
+  'For Costumers',
+  'For Freelancers',
+  'For Companies'
+];
+const List<String> infoText2 = [
   'Unlock a world of opportunities to showcase your skills ',
   'Post job opportunities effortlessly and connect with qualified Freelancers',
   'Access a diverse pool of talented freelancers ready to tackle any project'
 ];
-List<String> infoText3 = [
+const List<String> infoText3 = [
   'connecting with businesses seeking your talents',
   'Find top talent for your projects ',
   'Search for Freelancers to do services for you'
 ];
-String haveAccount = 'Already have an account? ';
-
+const String haveAccount = 'Already have an account? ';
 
 //! temporary constants .....
-List<String> jobDetailsTitle = ['Location', 'Work Nature', 'Salary', 'Type','Deadline:'];
-List<String> jobDetailsData = [
+const List<String> jobDetailsTitle = [
+  'Location',
+  'Work Nature',
+  'Salary',
+  'Type',
+  'Deadline:'
+];
+const List<String> jobDetailsData = [
   'Damascus,Syria',
   'On-Site',
   '2000,000 SP',
   'Full Time',
   '3/7/2024'
 ];
+
+const filterText = 'Filters';
+const typeText = 'Type';
+const workNatureText = 'Work Nature';
+const fullTimeText = 'Full Time';
+const partTimeText = 'Part Time';
+const onSiteText = 'on-site';
+const remoteText = 'Remote';
+const hybridText = 'Hybrid';
+const locationText = 'Location';
+const minimumSalaryText = 'minimum Salary';
+const syriaText = 'Syria';
+const minimumSalaryExampleText = '20,000';
+const cancelText = 'Cancel';
+const applyFiltersText = 'Apply Filters';
+
+
 

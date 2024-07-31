@@ -152,7 +152,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage>
                       const SizedBox(
                         height: 20,
                       ),
-                      AuthMainButton(
+                      MainActionButton(
                         // Reset Password Button
                         width: 0.5 * screenWidth,
                         height: 0.06 * screenHeight,

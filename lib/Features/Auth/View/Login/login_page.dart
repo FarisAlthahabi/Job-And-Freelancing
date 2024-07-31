@@ -240,7 +240,7 @@ class _LoginPageState extends State<LoginPage> implements LoginViewCallbacks {
                             const SizedBox(
                               height: 15,
                             ),
-                            AuthMainButton(
+                            MainActionButton(
                               width: 0.86 * screenWidth,
                               height: 0.07 * screenHeight,
                               text: loginText,

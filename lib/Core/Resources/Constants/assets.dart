@@ -21,3 +21,4 @@ List<String> iconIntro = List.generate(
     const String profileIcon = 'lib/Core/Resources/assets/SVG/profile.svg';
     const String settingsIcon = 'lib/Core/Resources/assets/SVG/setting.svg';
     const String verifiedIcon = 'lib/Core/Resources/assets/SVG/verified.svg';
+    const String filterSearchIcon = 'lib/Core/Resources/assets/SVG/filter_search.svg';

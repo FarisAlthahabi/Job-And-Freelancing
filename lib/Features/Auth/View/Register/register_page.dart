@@ -317,7 +317,7 @@ class _RegisterPageState extends State<RegisterPage>
                             height: 0.015 * screenHeight,
                             // height: 10,
                           ),
-                          AuthMainButton(
+                          MainActionButton(
                             width: 0.86 * screenWidth,
                             height: 0.07 * screenHeight,
                             text: signUpText,

@@ -63,7 +63,7 @@ class InfoScreens extends StatelessWidget implements InfoViewCallBacks {
                 SizedBox(
                   height: 0.023 * screenHeight,
                 ),
-                AuthMainButton(
+                MainActionButton(
                   width: 0.72 * screenWidth,
                   height: 0.08 * screenHeight,
                   yAxisOffset: 4,

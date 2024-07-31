@@ -149,7 +149,7 @@ class JobDetailsMainInfo extends StatelessWidget {
                         Text(
                           jobDetailsData[index],
                           style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 color: white,
                                 fontSize: 9.35,
                                 fontWeight: FontWeight.w700),
@@ -170,7 +170,7 @@ class JobDetailsMainInfo extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                AuthMainButton(
+                MainActionButton(
                   width: 80,
                   height: 23,
                   text: 'Message',
@@ -185,7 +185,7 @@ class JobDetailsMainInfo extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                AuthMainButton(
+                MainActionButton(
                     width: 80,
                     height: 23,
                     text: 'Apply',
@@ -193,7 +193,7 @@ class JobDetailsMainInfo extends StatelessWidget {
                     yAxisOffset: 4,
                     shadowColor: boxShadowColor2,
                     fontSize: 8.73,
-                    icon: Column(
+                    icon: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
