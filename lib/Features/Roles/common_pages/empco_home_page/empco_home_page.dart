@@ -10,6 +10,10 @@ import 'package:empco/Core/Widgets/job_details_contact.dart';
 import 'package:empco/Core/Widgets/show_snack_bar_method.dart';
 import 'package:empco/Features/Auth/View/Login/login_page.dart';
 import 'package:empco/Features/Auth/bloc/auth_bloc.dart';
+
+import 'package:empco/Features/Roles/Freelancer/Verification/VerificationVerified.dart';
+
+import 'package:empco/Features/Roles/Freelancer/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +58,15 @@ class EmpcoHomePage extends StatefulWidget {
 class _EmpcoHomePageState extends State<EmpcoHomePage>
     implements EmpcoHomePageCallBacks {
   @override
-  void onAccountVerifyTap() {}
+  void onAccountVerifyTap() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const VerificationVerified(
+            verificationStatus: 3,
+          ),
+        ));
+  }
 
   @override
   void onJobApplicationsTap() {}
@@ -65,7 +77,14 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
   }
 
   @override
-  void onProfileTap() {}
+  void onProfileTap() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ProfileView(),
+        ));
+    // context.go('$mainRoute$introRoute/$profileRoute');
+  }
 
   @override
   void onSettingsTap() {}

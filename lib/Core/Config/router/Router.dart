@@ -23,6 +23,7 @@ const freelancerHomePageRoute = 'freelancerHomePage';
 const companyHomePageRoute = 'companyHomePage';
 const customerHomePageRoute = 'customerHomePage';
 const jobDetailsRoute = 'JobDetails';
+const profileRoute = 'profile';
 
 GoRouter router = GoRouter(routes: [
   GoRoute(
@@ -72,6 +73,10 @@ GoRouter router = GoRouter(routes: [
                 path: jobDetailsRoute,
                 builder: (context, state) => const FreelancerJobDetailsView(),
               ),
+              // GoRoute(
+              //   path: profileRoute,
+              //   builder: (context, state) => const FreelancerJobDetailsView(),
+              // ),
             ]),
       ]),
 ]);

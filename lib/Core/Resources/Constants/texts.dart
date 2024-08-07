@@ -89,3 +89,8 @@ List<String> jobDetailsData = [
   '3/7/2024'
 ];
 
+
+//! profile view 
+  const String profile = 'profile';
+  const String editprofile = 'edit profile';
+

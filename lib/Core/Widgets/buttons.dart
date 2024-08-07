@@ -81,7 +81,7 @@ class AuthMainButton extends StatelessWidget {
   final double? blurRadius;
   final double? yAxisOffset;
   final Color? shadowColor;
-  final double fontSize;
+  final double? fontSize;
   final Widget? icon;
   final Color? buttonColor;
   final Border? border;
@@ -92,7 +92,7 @@ class AuthMainButton extends StatelessWidget {
   const AuthMainButton({
     super.key,
     required this.text,
-    required this.fontSize,
+    this.fontSize,
     this.border,
     this.icon,
     this.textColor,
