@@ -1,7 +1,9 @@
 import 'package:empco/Core/Resources/Constants/assets.dart';
 import 'package:empco/Core/Resources/Constants/colors.dart';
 import 'package:empco/Core/Resources/Constants/font_weights.dart';
+import 'package:empco/Core/Resources/Constants/text_styles.dart';
 import 'package:empco/Core/Resources/Constants/texts.dart';
+import 'package:empco/Core/Widgets/buttons.dart';
 import 'package:empco/Core/Widgets/empco_app_bar.dart';
 import 'package:empco/Core/Widgets/filter_icon_button.dart';
 import 'package:empco/Core/Widgets/notification_icon.dart';
@@ -25,6 +27,12 @@ abstract class EmpcoHomePageCallBacks {
   void onSettingsTap();
 
   void onLogoutTap();
+
+  void onCategorySelected(int index);
+
+  void onSearchChaged(String input);
+
+  void onSearchSubmitted(String input);
 }
 
 class EmpcoHomePage extends StatefulWidget {
@@ -71,6 +79,31 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
   void onSettingsTap() {}
 
   @override
+  void onSearchChaged(String input) {}
+
+  @override
+  void onSearchSubmitted(String input) {}
+
+  @override
+  void onCategorySelected(int index) {
+    setState(
+      () {
+        for (var element in isCategorySelected) {
+          if (element != isCategorySelected[index]) {
+            element = !element;
+          }
+        }
+        isCategorySelected[index] = !isCategorySelected[index];
+      },
+    );
+  }
+
+  List<bool> isCategorySelected = List.generate(
+    5,
+    (index) => false,
+  );
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthBloc(),
@@ -78,9 +111,11 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
           child: Scaffold(
         drawer: Drawer(
           shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(30),
-                  bottomRight: Radius.circular(30))),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
+          ),
           child: ListView(
             children: [
               DrawerHeader(
@@ -92,33 +127,34 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
                   fit: BoxFit.cover,
                 )),
                 child: Center(
-                    child: ListTile(
-                  leading: const CircleAvatar(
-                    backgroundImage: AssetImage(notionImage),
-                  ),
-                  title: Text(
-                    'Notion',
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: white,
-                        fontSize: 20,
-                        fontWeight: weightlevel7,
-                        height: 1.30,
+                  child: ListTile(
+                    leading: const CircleAvatar(
+                      backgroundImage: AssetImage(notionImage),
+                    ),
+                    title: Text(
+                      'Notion',
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: white,
+                          fontSize: 20,
+                          fontWeight: weightlevel7,
+                          height: 1.30,
+                        ),
+                      ),
+                    ),
+                    subtitle: Text(
+                      'Technology and Software',
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: const Color(0xFFDDDDDD),
+                          fontSize: 13,
+                          fontWeight: weightlevel7,
+                          height: 1.20,
+                        ),
                       ),
                     ),
                   ),
-                  subtitle: Text(
-                    'Technology and Software',
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: const Color(0xFFDDDDDD),
-                        fontSize: 13,
-                        fontWeight: weightlevel7,
-                        height: 1.20,
-                      ),
-                    ),
-                  ),
-                )),
+                ),
               ),
               ListView.builder(
                   shrinkWrap: true,
@@ -170,12 +206,13 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
                             if (index != 4) {
                               return SvgPicture.asset(icons[index]);
                             } else {
-                              return SizedBox(
-                                  width: 20,
-                                  height: 20,
-                                  child: CircularProgressIndicator(
-                                    color: red,
-                                  ));
+                              return const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  color: red,
+                                ),
+                              );
                             }
                           }
                           return SvgPicture.asset(icons[index]);
@@ -206,6 +243,8 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
         appBar: EmpcoAppBar(
           centerTitle: true,
           title: SearchTextField(
+            onChanged: onSearchChaged,
+            onSubmitted: onSearchSubmitted,
             searchJobController: widget.searchJobController,
             screenWidth: widget.screenWidth,
           ), // Search TextField
@@ -222,242 +261,295 @@ class _EmpcoHomePageState extends State<EmpcoHomePage>
             ),
           ],
         ),
-        body: Column(
-          children: [
-            ListTile(
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  'Posts Feed',
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                        color: black,
-                        fontSize: 18.64,
-                        fontWeight: weightlevel7),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text(
+                    'Posts Feed',
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                          color: black,
+                          fontSize: 18.64,
+                          fontWeight: weightlevel7),
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
+                ),
+                trailing: FilterIconButton(
+                  // Filter Button
+                  onTap: () {
+                    widget.onFilterTap();
+                  },
                 ),
               ),
-              trailing: FilterIconButton(
-                // Filter Button
-                onTap: () {
-                  widget.onFilterTap();
-                },
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            Expanded(
-                child: ListView.builder(
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      width: 300,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const CircleAvatar(
-                            radius: 14,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text('DEWARE Company',
-                              style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                    color: black,
-                                    fontSize: 6.63,
-                                    fontWeight: FontWeight.w700),
-                              )),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text('1h',
-                              style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                    color: Color.fromRGBO(131, 131, 131, 1),
-                                    fontSize: 7.72,
-                                    fontWeight: FontWeight.w400),
-                              )),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: 319,
-                      height: 380,
-                      decoration: BoxDecoration(
-                          color: const Color.fromRGBO(250, 250, 250, 1),
-                          border: Border.all(
-                              color: const Color.fromRGBO(125, 118, 118, 0.62),
-                              width: 0.11)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.abc),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Categories',
+                    style: TextStyles.labelLarge.copyWith(color: black),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 30,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return MainActionButton(
+                      onTap: () => onCategorySelected(index),
+                      text: 'hello',
+                      textColor: isCategorySelected[index]
+                          ? const Color(0xFF0B2244)
+                          : const Color(0xFFF6F6F6),
+                      buttonColor: isCategorySelected[index]
+                          ? const Color(0xFFF6F6F6)
+                          : const Color(0xFF0B2244),
+                      width: 100,
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      width: 5,
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                  child: ListView.builder(
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      SizedBox(
+                        width: 300,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                Text('Front-End Developer',
-                                    style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                          color: black,
-                                          fontSize: 13.48,
-                                          fontWeight: FontWeight.w700),
-                                    )),
-                                if (widget.onEditTap != null)
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 85),
-                                    child: SizedBox(
-                                      width: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          InkWell(
-                                              onTap: widget.onEditTap,
-                                              child: const Icon(
-                                                  Icons.edit_outlined)),
-                                          InkWell(
-                                              onTap: widget.onDeleteTap,
-                                              child: const Icon(Icons
-                                                  .delete_outline_outlined)),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                              ],
+                            const CircleAvatar(
+                              radius: 14,
                             ),
                             const SizedBox(
-                              height: 10,
+                              width: 5,
                             ),
-                            SizedBox(
-                              width: 230,
-                              height: 110,
-                              child: ListView.separated(
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 5,
-                                itemBuilder: (context, index) {
-                                  return SizedBox(
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.location_on,
-                                          size: 15,
-                                          color:
-                                              Color.fromRGBO(236, 227, 227, 1),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text.rich(
-                                          textAlign: TextAlign.center,
-                                          TextSpan(
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                    color: blue,
-                                                    fontSize: 7.97,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                              text: jobDetailsTitle[index],
-                                              children: const [
-                                                TextSpan(
-                                                    text: ':',
-                                                    style: TextStyle(
-                                                        fontSize: 10.53)),
-                                              ]),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          jobDetailsData[index],
-                                          style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                                color: black,
-                                                fontSize: 8.87,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return const SizedBox(
-                                    height: 7,
-                                  );
-                                },
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              width: 96.39,
-                              height: 18.45,
-                              decoration: const BoxDecoration(
-                                  color: Color.fromRGBO(102, 161, 231, 0.07)),
-                              child: Center(
-                                child: Text(
-                                  'Description',
-                                  style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                        color: black,
-                                        fontSize: 10.82,
-                                        fontWeight: weightlevel7),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                'As a Front-End Developer at Deware, you will be responsible for creating visually appealing and user-friendly web applications. You will work closely with our design and back-end development teams to deliver high-quality user experiences. If you are passionate about web technologies and have a keen eye for design, we would love to meet you!',
+                            Text('DEWARE Company',
                                 style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                       color: black,
-                                      fontSize: 9.26,
-                                      fontWeight: weightlevel4),
-                                ),
-                              ),
-                            ),
+                                      fontSize: 6.63,
+                                      fontWeight: FontWeight.w700),
+                                )),
                             const SizedBox(
-                              height: 10,
+                              width: 5,
                             ),
-                            const JobContactDetails(
-                              title: 'Contact Info',
-                              width: 75,
-                              fontSize: 11,
-                              iconSize: 12.5,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            Text('1h',
+                                style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                      color: Color.fromRGBO(131, 131, 131, 1),
+                                      fontSize: 7.72,
+                                      fontWeight: FontWeight.w400),
+                                )),
                           ],
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                );
-              },
-            )),
-          ],
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: 319,
+                        height: 380,
+                        decoration: BoxDecoration(
+                            color: const Color.fromRGBO(250, 250, 250, 1),
+                            border: Border.all(
+                                color:
+                                    const Color.fromRGBO(125, 118, 118, 0.62),
+                                width: 0.11)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  Text('Front-End Developer',
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            color: black,
+                                            fontSize: 13.48,
+                                            fontWeight: FontWeight.w700),
+                                      )),
+                                  if (widget.onEditTap != null)
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 85),
+                                      child: SizedBox(
+                                        width: 50,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            InkWell(
+                                                onTap: widget.onEditTap,
+                                                child: const Icon(
+                                                    Icons.edit_outlined)),
+                                            InkWell(
+                                                onTap: widget.onDeleteTap,
+                                                child: const Icon(Icons
+                                                    .delete_outline_outlined)),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SizedBox(
+                                width: 230,
+                                height: 110,
+                                child: ListView.separated(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: 5,
+                                  itemBuilder: (context, index) {
+                                    return SizedBox(
+                                      child: Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.location_on,
+                                            size: 15,
+                                            color: Color.fromRGBO(
+                                                236, 227, 227, 1),
+                                          ),
+                                          const SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text.rich(
+                                            textAlign: TextAlign.center,
+                                            TextSpan(
+                                                style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      color: blue,
+                                                      fontSize: 7.97,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                                text: jobDetailsTitle[index],
+                                                children: const [
+                                                  TextSpan(
+                                                      text: ':',
+                                                      style: TextStyle(
+                                                          fontSize: 10.53)),
+                                                ]),
+                                          ),
+                                          const SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            jobDetailsData[index],
+                                            style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  color: black,
+                                                  fontSize: 8.87,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return const SizedBox(
+                                      height: 7,
+                                    );
+                                  },
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 96.39,
+                                height: 18.45,
+                                decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(102, 161, 231, 0.07)),
+                                child: Center(
+                                  child: Text(
+                                    'Description',
+                                    style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: black,
+                                          fontSize: 10.82,
+                                          fontWeight: weightlevel7),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              SizedBox(
+                                width: 250,
+                                child: Text(
+                                  'As a Front-End Developer at Deware, you will be responsible for creating visually appealing and user-friendly web applications. You will work closely with our design and back-end development teams to deliver high-quality user experiences. If you are passionate about web technologies and have a keen eye for design, we would love to meet you!',
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        color: black,
+                                        fontSize: 9.26,
+                                        fontWeight: weightlevel4),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const JobContactDetails(
+                                title: 'Contact Info',
+                                width: 75,
+                                fontSize: 11,
+                                iconSize: 12.5,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  );
+                },
+              )),
+            ],
+          ),
         ),
       )),
     );

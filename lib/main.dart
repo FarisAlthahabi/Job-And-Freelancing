@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
          MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
-            home: const CompanyNavigationBar() );
+            home: const FreelancerNavigationBar() );
     //     MaterialApp.router(
     //   routerConfig: router,
     //   debugShowCheckedModeBanner: false,

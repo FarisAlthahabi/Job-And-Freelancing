@@ -3,17 +3,21 @@ import 'package:empco/Features/Roles/Freelancer/Jobs/View/Widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 abstract class JobsCallBacks {
-  onNotificationTap();
+  void onNotificationTap();
 
-  onExpandJopTap(BuildContext context);
+  void onExpandJopTap(BuildContext context);
 
-  onFavoriteTap();
+  void onFavoriteTap();
 
-  onMessageTap();
+  void onMessageTap();
 
-  onApplyTap();
+  void onApplyTap();
 
-  onFilterTap();
+  void onFilterTap();
+
+  void onSearchChaged(String input);
+
+  void onSearchSubmitted(String input);
 }
 
 late TextEditingController searchJobController;
@@ -57,6 +61,14 @@ class _JobsPageState extends State<JobsPage> implements JobsCallBacks {
     haveNewNotification = !haveNewNotification;
   }
 
+   @override
+  void onSearchChaged(String input) {
+  }
+  
+  @override
+  void onSearchSubmitted(String input) {
+  }
+
   @override
   Widget build(BuildContext context) {
     var deviceData = MediaQuery.of(context);
@@ -69,6 +81,8 @@ class _JobsPageState extends State<JobsPage> implements JobsCallBacks {
         appBar: AppBar(
           centerTitle: true,
           title: SearchTextField(
+            onChanged: onSearchChaged,
+            onSubmitted: onSearchSubmitted,
             searchJobController: searchJobController,
             screenWidth: screenWidth,
           ), // Search TextField

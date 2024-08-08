@@ -105,7 +105,7 @@ class MainActionButton extends StatelessWidget {
     this.shadowColor,
     this.borderRadius,
     this.textStyle,
-    this.shadow,
+    this.shadow, 
   });
 
   @override
@@ -119,13 +119,14 @@ class MainActionButton extends StatelessWidget {
         decoration: BoxDecoration(
             color: buttonColor ?? blue,
             borderRadius: BorderRadius.circular(borderRadius ?? 327.16),
-            boxShadow: shadow ?? [
-              BoxShadow(
-                  offset: Offset(0, yAxisOffset ?? 0),
-                  spreadRadius: 0,
-                  blurRadius: blurRadius ?? 0,
-                  color: shadowColor ?? white)
-            ]),
+            boxShadow: shadow ??
+                [
+                  BoxShadow(
+                      offset: Offset(0, yAxisOffset ?? 0),
+                      spreadRadius: 0,
+                      blurRadius: blurRadius ?? 0,
+                      color: shadowColor ?? white)
+                ]),
         child: Center(
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -155,7 +156,11 @@ class MainActionButton extends StatelessWidget {
 class BackTextButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
-  const BackTextButton({super.key, required this.onTap, required this.text});
+  const BackTextButton({
+    super.key,
+    required this.onTap,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {

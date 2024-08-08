@@ -10,18 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FilterBottomSheet extends StatelessWidget {
-  const FilterBottomSheet(
-      {super.key,
-      required this.onTypeSelected,
-      required this.onWorkNatureSelected,
-      required this.onLocationChanged,
-      required this.onLocationSubmitted,
-      required this.locationFocusNode,
-      required this.onMinimumSalaryChanged,
-      required this.onMinimumSalarySubmitted,
-      required this.minimumSalaryFocusNode,
-      required this.onCancelTap,
-      required this.onApplyFiltersTap});
+  const FilterBottomSheet({
+    super.key,
+    required this.onTypeSelected,
+    required this.onWorkNatureSelected,
+    required this.onLocationChanged,
+    required this.onLocationSubmitted,
+    required this.locationFocusNode,
+    required this.onMinimumSalaryChanged,
+    required this.onMinimumSalarySubmitted,
+    required this.minimumSalaryFocusNode,
+    required this.onCancelTap,
+    required this.onApplyFiltersTap,
+  });
 
   final VoidCallback onTypeSelected;
   final VoidCallback onWorkNatureSelected;
