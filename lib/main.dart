@@ -8,6 +8,7 @@ import 'package:empco/Features/Auth/View/Verify_Email/verify_email_page.dart';
 import 'package:empco/Features/Roles/Company/navigation_bar/navigation_bar.dart';
 import 'package:empco/Features/Roles/Freelancer/Navigation_Bar/navigation_bar.dart';
 import 'package:empco/Features/Roles/Freelancer/Job_Details/View/job_details.dart';
+import 'package:empco/Features/Roles/Freelancer/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,13 +28,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-         MaterialApp(
-            theme: lightTheme,
-            debugShowCheckedModeBanner: false,
-            home: const FreelancerNavigationBar() );
-    //     MaterialApp.router(
-    //   routerConfig: router,
-    //   debugShowCheckedModeBanner: false,
-    // );
+        //  MaterialApp(
+        //     theme: lightTheme,
+        //     debugShowCheckedModeBanner: false,
+        //     home: const CompanyNavigationBar() );
+        MaterialApp.router(
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
+    );
   }
 }

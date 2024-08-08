@@ -98,6 +98,7 @@ const List<String> jobDetailsData = [
   '3/7/2024'
 ];
 
+<<<<<<< HEAD
 const filterText = 'Filters';
 const typeText = 'Type';
 const workNatureText = 'Work Nature';
@@ -114,4 +115,10 @@ const cancelText = 'Cancel';
 const applyFiltersText = 'Apply Filters';
 
 
+=======
+
+//! profile view 
+  const String profile = 'profile';
+  const String editprofile = 'edit profile';
+>>>>>>> e903325732f3bbda458f7bf2887c086f99f9a31f
 
